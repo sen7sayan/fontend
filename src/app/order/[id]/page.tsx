@@ -27,7 +27,6 @@ interface Order {
 
 export default function OrderDetailPage() {
   const { id } = useParams();
-  console.log(id)
   const [order, setOrder] = useState<Order | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -42,7 +41,7 @@ export default function OrderDetailPage() {
       }
 
       try {
-        const res = await fetch(`http://localhost:3001/customer/order/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_CUSTOMER_SERVICE}/api/customer/order/${id}`, {
           headers: {
             Authorization: token,
           },

@@ -24,7 +24,7 @@ export default function ProductPage() {
 
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:3002/product/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_ORDER_PRODUCT_SERVICE}/api/product/${id}`);
         const result = await res.json();
         setProduct(result.data);
       } catch (err) {

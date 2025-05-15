@@ -19,7 +19,7 @@ export default function CartPage() {
       quantity: item.quantity,
     }));
 
-    const res = await fetch('http://localhost:3001/customer/order', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CUSTOMER_SERVICE}/api/customer/order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

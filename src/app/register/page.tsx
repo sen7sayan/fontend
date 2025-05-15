@@ -26,7 +26,7 @@ export default function RegisterPage() {
     setErrorMsg('');
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_CUSTOMER_SERVICE}/customer`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_CUSTOMER_SERVICE}/api/customer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
