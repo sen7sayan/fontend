@@ -26,7 +26,7 @@ export default function Home() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_ORDER_PRODUCT_SERVICE}/product?page=${page}&limit=${limit}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_ORDER_PRODUCT_SERVICE}/api/product?page=${page}&limit=${limit}`);
         const data = await res.json();
         console.log(data)
         setProducts(data.data);

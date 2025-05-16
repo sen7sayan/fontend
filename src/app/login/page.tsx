@@ -1,15 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function LoginPage() {
-  const router = useRouter();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Check if token exists on component mount
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      window.location.href = '/';
+    }
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +32,9 @@ export default function LoginPage() {
       if (res.ok && result.data?.access_token) {
         localStorage.setItem('token', result.data.access_token);
         localStorage.setItem('userName', email); // You can replace this with actual name if available
-        router.push('/');
+        
+        // Reload the page instead of using router.push
+        window.location.reload();
       } else {
         setErrorMsg(result.message || 'Login failed');
       }
@@ -74,12 +81,11 @@ export default function LoginPage() {
         >
           Login
         </button>
-        <div className="flex gap-4 items-center">
-            <Link href="/register" className="text-blue-600 hover:underline">
-        Register
-      </Link>
+        <div className="mt-4 flex justify-center">
+          <Link href="/register" className="text-blue-600 hover:underline">
+            Register
+          </Link>
         </div>
-      
       </form>
     </div>
   );

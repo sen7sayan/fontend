@@ -64,7 +64,7 @@ const totalPrice = items.reduce((sum, item) => sum + item.sku.price * item.quant
           </ul>
           <div className="mt-4">
             <p className="text-lg font-semibold">Total Cart: {totalItems}</p>
-            <p className="text-lg font-semibold">Total: ${totalPrice}</p>
+            <p className="text-lg font-semibold">Total: Rs.{totalPrice}</p>
             
             <button
               onClick={handlePlaceOrder}
